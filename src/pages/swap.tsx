@@ -1,20 +1,20 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { HomeView } from "../views";
+import { SwapView } from "../views";
 
-const Home: NextPage = () => {
+const Swap: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Octane Demo</title>
+        <title>Swap</title>
         <meta
           name="description"
-          content="Octane Demo"
+          content="Gasless swap using Octane"
         />
       </Head>
-      <HomeView />
+      <SwapView />
     </div>
   );
 };
 
-export default Home;
+export default Swap;

@@ -10,8 +10,9 @@ import {
     // LedgerWalletAdapter,
     // SlopeWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
-import { Cluster, clusterApiUrl } from '@solana/web3.js';
+import { clusterApiUrl } from '@solana/web3.js';
 import { FC, ReactNode, useCallback, useMemo } from 'react';
+import { AuthProvider} from "./AuthProvider";
 import { AutoConnectProvider, useAutoConnect } from './AutoConnectProvider';
 import { notify } from "../utils/notifications";
 import { NetworkConfigurationProvider, useNetworkConfiguration } from './NetworkConfigurationProvider';
@@ -49,7 +50,11 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
         // TODO: updates needed for updating and referencing endpoint: wallet adapter rework
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} onError={onError} autoConnect={autoConnect}>
-                <ReactUIWalletModalProvider>{children}</ReactUIWalletModalProvider>
+                <ReactUIWalletModalProvider>
+                  <AuthProvider>
+                    {children}
+                  </AuthProvider>
+                </ReactUIWalletModalProvider>
             </WalletProvider>
         </ConnectionProvider>
     );

@@ -1,52 +1,41 @@
 // Next, React
-import { FC, useEffect, useState } from 'react';
+import {FC} from 'react';
 import Link from 'next/link';
 
 // Wallet
-import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import {SubmitButton} from "../../components/SubmitButton";
 
-// Components
-import { RequestAirdrop } from '../../components/RequestAirdrop';
-import pkg from '../../../package.json';
-
-// Store
-import useUserSOLBalanceStore from '../../stores/useUserSOLBalanceStore';
-
-export const HomeView: FC = ({ }) => {
-  const wallet = useWallet();
-  const { connection } = useConnection();
-
-  const balance = useUserSOLBalanceStore((s) => s.balance)
-  const { getUserSOLBalance } = useUserSOLBalanceStore()
-
-  useEffect(() => {
-    if (wallet.publicKey) {
-      console.log(wallet.publicKey.toBase58())
-      getUserSOLBalance(wallet.publicKey, connection)
-    }
-  }, [wallet.publicKey, connection, getUserSOLBalance])
-
+export const HomeView: FC = ({}) => {
   return (
-
     <div className="md:hero mx-auto p-4">
       <div className="md:hero-content flex flex-col">
-        <h1 className="text-center text-5xl md:pl-12 font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#9945FF] to-[#14F195]">
-          Scaffold Lite <span className='text-sm font-normal align-top text-slate-700'>v{pkg.version}</span>
+        <h1
+          className="text-center text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-[#9945FF] to-[#14F195]">
+          Gasless transactions on Solana
         </h1>
-        <h4 className="md:w-full text-center text-slate-300 my-2">
-          <p>Simply the fastest way to get started.</p>
-          Next.js, tailwind, wallet, web3.js, and more.
-        </h4>
-        <div className="max-w-md mx-auto mockup-code bg-primary p-6 my-2">
-          <pre data-prefix=">">
-            <code className="truncate">Start building on Solana  </code>
-          </pre>
-        </div>        
-          <div className="text-center">
-          <RequestAirdrop />
-          {/* {wallet.publicKey && <p>Public Key: {wallet.publicKey.toBase58()}</p>} */}
-          {wallet && <p>SOL Balance: {(balance || 0).toLocaleString()}</p>}
-        </div>
+        <p className="md:w-full text-slate-300 my-2 max-w-2xl">
+          <a href={"https://github.com/solana-labs/octane"}>⛽ Octane</a> allows to pay transaction
+          fees through alternative methods.
+          It{"'"}s&nbsp;designed to onboard new wallets without any funds or stablecoin-only wallets without&nbsp;SOL.
+        </p>
+        <ul className="md:w-full text-slate-300 my-2 max-w-2xl list-disc pl-4">
+          <li>
+            Pay transaction fees and associated account initialization fees with liquid SPL tokens. <span
+            className={'text-blue-400 hover:underline'}><Link href={'/transfer'}>Gasless transfer example.</Link></span>
+          </li>
+          <li>
+            Swap SPL tokens to SOL without any SOL
+            on the balance. <span className={'text-blue-400 hover:underline'}><Link href={'/swap'}>Swap example.</Link></span>
+            <span className={'text-blue-400 hover:underline'}><Link href={'/just-in-time-swap'}>Just-in-time swap example</Link></span> to
+            get SOL for complex
+            transactions like NFT mints and interactions with Anchor programs.
+          </li>
+          <li>Sponsor selected transactions for your users or let them pay transaction fees in your own token. <span
+            className={'text-blue-400 hover:underline'}><Link href={'/transaction-with-auth'}>Sponsored transaction example.</Link></span>
+          </li>
+        </ul>
+        <SubmitButton text={'View demo code'}
+                      onClick={() => window.open("https://github.com/sevazhidkov/octane-demo")}/>
       </div>
     </div>
   );
