@@ -1,5 +1,7 @@
 # Octane Demo App
 
+<img width="1024" alt="Octane demo app" src="https://user-images.githubusercontent.com/6896447/189394037-3c8dc507-bace-4cc4-b9da-292e597dc294.png">
+
 Simple app to explore the capabilities of Octane and provide an integration example. 
 
 The app is based on [dapp-scaffold](https://github.com/solana-labs/dapp-scaffold).
