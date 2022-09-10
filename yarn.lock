@@ -726,6 +726,14 @@
     "@metaplex-foundation/mpl-core" "^0.6.1"
     "@solana/web3.js" "^1.35.1"
 
+"@metaplex-foundation/mpl-core@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-core/-/mpl-core-0.0.2.tgz#17ee2cc216e17629d6df1dbba75964625ebbd603"
+  integrity sha512-UUJ4BlYiWdDegAWmjsNQiNehwYU3QfSFWs3sv4VX0J6/ZrQ28zqosGhQ+I2ZCTEy216finJ82sZWNjuwSWCYyQ==
+  dependencies:
+    "@solana/web3.js" "^1.31.0"
+    bs58 "^4.0.1"
+
 "@metaplex-foundation/mpl-core@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-core/-/mpl-core-0.0.5.tgz#0504ad49b6d2e6d2321700edf549804f343c86c6"
@@ -742,6 +750,15 @@
   dependencies:
     "@solana/web3.js" "^1.35.1"
     bs58 "^4.0.1"
+
+"@metaplex-foundation/mpl-token-metadata@1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@metaplex-foundation/mpl-token-metadata/-/mpl-token-metadata-1.2.5.tgz#1a927b1c7d30cd634a1e4782022712a02f6865c2"
+  integrity sha512-pxRG53JsTSwXpiJJMHNulJhH8kO3hHztQ3QxslUoKw2hBYKXsg9TGsiHgNIhN2MPZGBJ2pDeK6kNGv0sd54HhA==
+  dependencies:
+    "@metaplex-foundation/mpl-core" "^0.0.2"
+    "@solana/spl-token" "^0.1.8"
+    "@solana/web3.js" "^1.31.0"
 
 "@metaplex-foundation/mpl-token-metadata@^2.2.2":
   version "2.2.4"
@@ -878,12 +895,33 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@orca-so/common-sdk@~0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@orca-so/common-sdk/-/common-sdk-0.1.0.tgz#25050f18e95bab6a7ef9b10e2d3bd44699ce9836"
+  integrity sha512-WH6mjrrJyuUMq0DC41jWW6opEIq5Ip/UOf8h7z/gM9Zx+9156JwP/dm8N5GJTNnIG6GYFfhemyNNPj1y3U5LIw==
+  dependencies:
+    "@project-serum/anchor" "~0.25.0"
+    "@solana/spl-token" "0.1.8"
+    decimal.js "^10.3.1"
+
+"@orca-so/whirlpools-sdk@^0.5.0":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@orca-so/whirlpools-sdk/-/whirlpools-sdk-0.5.1.tgz#894ebd0fac21a0f7e17c25026410a12efa419727"
+  integrity sha512-HDlcQHc5KskbwKJm7h57zh5ke/DT983//kKC5uZpVP4s0hqd2pHMkQTN+WCA4d1ijeAtQ2DIcryexyDbN34BsA==
+  dependencies:
+    "@metaplex-foundation/mpl-token-metadata" "1.2.5"
+    "@orca-so/common-sdk" "~0.1.0"
+    "@project-serum/anchor" "~0.25.0"
+    "@solana/spl-token" "^0.1.8"
+    decimal.js "^10.3.1"
+    tiny-invariant "^1.2.0"
+
 "@pedrouid/environment@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
-"@project-serum/anchor@^0.25.0":
+"@project-serum/anchor@^0.25.0", "@project-serum/anchor@~0.25.0":
   version "0.25.0"
   resolved "https://registry.yarnpkg.com/@project-serum/anchor/-/anchor-0.25.0.tgz#88ee4843336005cf5a64c80636ce626f0996f503"
   integrity sha512-E6A5Y/ijqpfMJ5psJvbw0kVTzLZFUcOFgs6eSM2M2iWE1lVRF18T6hWZVNl6zqZsoz98jgnNHtVGJMs+ds9A7A==
@@ -1023,17 +1061,6 @@
     tiny-invariant "^1.2.0"
     tslib "^2.4.0"
 
-"@sevazhidkov/octane-core@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@sevazhidkov/octane-core/-/octane-core-0.0.1.tgz#e78ff2435a6e65047a471528cbe3c2f1e25519ed"
-  integrity sha512-EwwSZ/0FxBWI4H4+X3ynxWPJ6sRQ8Ft/vCqScAW4Hfs7sTGQv7RKTqSd/uUMG/ajXv/Yt27JKGW+Yi9OWF9cgg==
-  dependencies:
-    "@solana/spl-token" "^0.2.0"
-    "@solana/web3.js" "^1.34.0"
-    bs58 "^4.0.1"
-    cache-manager "^3.6.0"
-    encoding "^0.1.13"
-
 "@sideway/address@^4.1.3":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@sideway/address/-/address-4.1.4.tgz#03dccebc6ea47fdc226f7d3d1ad512955d4783f0"
@@ -1080,6 +1107,19 @@
   dependencies:
     buffer "~6.0.3"
 
+"@solana/octane-core@https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad":
+  version "0.0.1"
+  resolved "https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad#b8f5b4192c9591243cd7d97fcda8519b38e63e0e"
+  dependencies:
+    "@orca-so/whirlpools-sdk" "^0.5.0"
+    "@project-serum/anchor" "^0.25.0"
+    "@solana/spl-token" "^0.2.0"
+    "@solana/web3.js" "^1.34.0"
+    axios "^0.27.2"
+    bs58 "^4.0.1"
+    cache-manager "^3.6.0"
+    encoding "^0.1.13"
+
 "@solana/spl-memo@^0.2.2":
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/@solana/spl-memo/-/spl-memo-0.2.2.tgz#b7809eaba8a5be7337669d51c8681d7dcbd1d63f"
@@ -1087,7 +1127,7 @@
   dependencies:
     buffer "^6.0.3"
 
-"@solana/spl-token@^0.1.8":
+"@solana/spl-token@0.1.8", "@solana/spl-token@^0.1.8":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.1.8.tgz#f06e746341ef8d04165e21fc7f555492a2a0faa6"
   integrity sha512-LZmYCKcPQDtJgecvWOgT/cnoIQPWjdH+QVyzPcFvyDUiT0DiRjZaam4aqNUyvchLFhzgunv3d9xOoyE34ofdoQ==
@@ -2743,6 +2783,11 @@ decimal.js-light@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/decimal.js-light/-/decimal.js-light-2.5.1.tgz#134fd32508f19e208f4fb2f8dac0d2626a867934"
   integrity sha512-qIMFpTMZmny+MMIitAB6D7iVPEorVw6YQRWkvarTkT4tBeSLLiHzcwj6q0MmYSFCiVpiqPJTJEYIrpcPzVEIvg==
+
+decimal.js@^10.3.1:
+  version "10.4.0"
+  resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.4.0.tgz#97a7448873b01e92e5ff9117d89a7bca8e63e0fe"
+  integrity sha512-Nv6ENEzyPQ6AItkGwLE2PGKinZZ9g59vSh2BeH6NqPu0OTKZ5ruJsVqh/orbAnqXc9pBbgXAIrc2EyaCj8NpGg==
 
 deep-is@^0.1.3:
   version "0.1.4"
