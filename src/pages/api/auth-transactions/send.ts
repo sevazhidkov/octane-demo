@@ -1,7 +1,7 @@
 import base58 from 'bs58';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {sendAndConfirmRawTransaction, Transaction} from "@solana/web3.js";
-import { core } from '@sevazhidkov/octane-core';
+import { core } from '@solana/octane-core';
 import {
   redisClient, feePayer, connection, SIGNATURES_PER_USER,
   getRedisKeyForSignaturesCount, getRedisKeyForSignatureRecord,
