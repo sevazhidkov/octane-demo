@@ -18,7 +18,7 @@
     "@project-serum/anchor": "^0.25.0",
     "@saberhq/anchor-contrib": "^1.14.4",
     "@saberhq/token-utils": "^1.14.4",
-    "@solana/octane-core": "https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad",
+    "@solana/octane-core": "https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20yarn%20run%20build",
     "@solana/spl-memo": "^0.2.2",
     "@solana/spl-token": "^0.2.0",
     "@solana/wallet-adapter-base": "^0.9.3",

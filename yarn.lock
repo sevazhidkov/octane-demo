@@ -1107,9 +1107,9 @@
   dependencies:
     buffer "~6.0.3"
 
-"@solana/octane-core@https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad":
+"@solana/octane-core@https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20yarn%20run%20build":
   version "0.0.1"
-  resolved "https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad#b8f5b4192c9591243cd7d97fcda8519b38e63e0e"
+  resolved "https://gitpkg.now.sh/solana-labs/octane/packages/core?630a8d6afc90d2fe5aad88db2dc56c880cdbb5ad&scripts.postinstall=yarn%20install%20--ignore-scripts%20%26%26%20yarn%20run%20build#f417c8d662cd32f50b2c1933f0e80c944ff20f12"
   dependencies:
     "@orca-so/whirlpools-sdk" "^0.5.0"
     "@project-serum/anchor" "^0.25.0"
