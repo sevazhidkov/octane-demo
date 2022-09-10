@@ -20,7 +20,7 @@
     "@saberhq/token-utils": "^1.14.4",
     "@sevazhidkov/octane-core": "^0.0.1",
     "@solana/spl-memo": "^0.2.2",
-    "@solana/spl-token": "^0.3.4",
+    "@solana/spl-token": "^0.2.0",
     "@solana/wallet-adapter-base": "^0.9.3",
     "@solana/wallet-adapter-react": "^0.15.3",
     "@solana/wallet-adapter-react-ui": "^0.9.5",
