@@ -9,6 +9,7 @@ import {SubmitButton} from "../components/SubmitButton";
 import useFeePayerConfigStore from "../stores/useFeePayerConfigStore";
 import {Title} from "../components/Title";
 import {notify} from "../utils/notifications";
+import {useGoogleReCaptcha} from "react-google-recaptcha-v3";
 
 async function buildTransaction(
   connection: Connection,
@@ -28,6 +29,7 @@ async function buildTransaction(
 export const TransactionWithAuthView: FC = ({}) => {
   const {publicKey, signTransaction} = useWallet();
   const {connection} = useConnection();
+  const {executeRecaptcha} = useGoogleReCaptcha();
 
   // fixme: check that wallet is available
   // todo: handle errors
@@ -60,31 +62,34 @@ export const TransactionWithAuthView: FC = ({}) => {
       feePayerPublicKey,
       publicKey,
     );
+    const token = await executeRecaptcha('submitTransaction');
     await signTransaction(transaction);
     await axios.post('/api/auth-transactions/send', {
-      transaction: base58.encode(transaction.serialize({requireAllSignatures: false}))
+      transaction: base58.encode(transaction.serialize({requireAllSignatures: false})),
+      reCaptchaToken: token,
     }, {
       headers: {
         'Authorization': `Bearer ${await getAccessTokenSilently()}`
       }
     });
 
-    notify({ type: 'success', message: 'Transaction is submitted!'});
+    notify({type: 'success', message: 'Transaction is submitted!'});
 
     await fetchConfigWithToken();
-  }, [connection, feePayerPublicKey, publicKey, signTransaction, getAccessTokenSilently, fetchConfigWithToken]);
+  }, [connection, feePayerPublicKey, publicKey, signTransaction, getAccessTokenSilently, fetchConfigWithToken, executeRecaptcha]);
 
   return (
     <div className="md:hero mx-auto p-4">
       <div className="md:hero-content flex flex-col">
-        <Title text="Sponsored Transaction" />
+        <Title text="Sponsored Transaction"/>
         {/* CONTENT GOES HERE */}
         <div className="text-center">
           <div>
-            {isAuthenticated && signaturesLeft !== null && signaturesLeft > 0 && (
+            {isAuthenticated && executeRecaptcha && signaturesLeft !== null && signaturesLeft > 0 && (
               <>
                 <div>{signaturesLeft} signatures left</div>
-                <SubmitButton onClick={submitTransaction} text={'Send transaction'} disabled={!publicKey} disabledText={'Connect wallet'} />
+                <SubmitButton onClick={submitTransaction} text={'Send transaction'} disabled={!publicKey}
+                              disabledText={'Connect wallet'}/>
               </>
             )}
             {isAuthenticated && signaturesLeft === 0 && (

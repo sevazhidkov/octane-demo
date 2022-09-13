@@ -7,6 +7,7 @@ import {
   getRedisKeyForSignaturesCount, getRedisKeyForSignatureRecord,
 } from "../../../utils/feePayer";
 import {getTokenPayloadFromHeaders} from "../../../utils/auth";
+import {createAssessment} from "../../../utils/reCaptcha";
 
 type Data = { status: 'ok', txid: string } | { status: 'error', message: string };
 
@@ -24,6 +25,30 @@ export default async function handler(
     return;
   }
 
+  const reCaptchaToken = req.body?.reCaptchaToken;
+  if (typeof reCaptchaToken !== 'string') {
+    res.status(400).send({ status: 'error', message: 'request should contain reCaptchaToken param'});
+    return;
+  }
+
+  const reCaptchaAssessment = await createAssessment(
+    process.env.RECAPTCHA_PROJECT_ID,
+    process.env.RECAPTCHA_API_KEY,
+    reCaptchaToken,
+    process.env.RECAPTCHA_KEY,
+    'sendTransaction'
+  );
+  console.log('reCaptchaAssessment', reCaptchaAssessment);
+  if (!reCaptchaAssessment.tokenProperties.valid) {
+    res.status(400).send({ status: 'error', message: 'invalid captcha token' });
+    return;
+  }
+  // Learn about scores here: https://cloud.google.com/recaptcha-enterprise/docs/interpret-assessment
+  if (reCaptchaAssessment.riskAnalysis.score < 0.5) {
+    res.status(400).send({ status: 'error', message: 'invalid captcha token' });
+    return;
+  }
+
   const tokenPayload = getTokenPayloadFromHeaders(req);
   if (tokenPayload === null) {
     res.status(403).send({ status: 'error', message: 'access denied' });
@@ -37,6 +62,8 @@ export default async function handler(
     res.status(400).send({status: 'error', message: "can't decode transaction"});
     return;
   }
+
+
 
   let signature: string;
   try {

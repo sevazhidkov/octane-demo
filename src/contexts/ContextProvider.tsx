@@ -16,6 +16,7 @@ import { AuthProvider} from "./AuthProvider";
 import { AutoConnectProvider, useAutoConnect } from './AutoConnectProvider';
 import { notify } from "../utils/notifications";
 import { NetworkConfigurationProvider, useNetworkConfiguration } from './NetworkConfigurationProvider';
+import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
 
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const { autoConnect } = useAutoConnect();
@@ -52,7 +53,9 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
             <WalletProvider wallets={wallets} onError={onError} autoConnect={autoConnect}>
                 <ReactUIWalletModalProvider>
                   <AuthProvider>
-                    {children}
+                    <GoogleReCaptchaProvider reCaptchaKey={process.env.RECAPTCHA_KEY}>
+                      {children}
+                    </GoogleReCaptchaProvider>
                   </AuthProvider>
                 </ReactUIWalletModalProvider>
             </WalletProvider>
