@@ -10,4 +10,4 @@ The app is based on [dapp-scaffold](https://github.com/solana-labs/dapp-scaffold
 * `src/views/transfer.tsx` allows to send a token transfer and create associated token account.
 * `src/views/swap.tsx` swaps tokens to SOL.
 * `src/views/just-in-time-swap.tsx` swaps tokens to get SOL for specific complex transactions like NFT mints and Anchor program interacitons.
-* `src/views/transaction-with-auth.tsx` on client and `src/pages/api/auth-transactions/index.ts` on backend fully sponsor transactions for registered users.
+* `src/views/transaction-with-auth.tsx` on client and `src/pages/api/auth-transactions/index.ts` on backend fully sponsor transactions for registered users. It also implements ReCaptcha checks on all requests.
