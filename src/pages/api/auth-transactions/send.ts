@@ -63,8 +63,6 @@ export default async function handler(
     return;
   }
 
-
-
   let signature: string;
   try {
     signature = (await core.validateTransaction(
@@ -75,8 +73,14 @@ export default async function handler(
       5000,
     )).signature;
   } catch (e) {
-    console.log(e);
     res.status(400).send({status: 'error', message: 'bad transaction'});
+    return;
+  }
+
+  try {
+    await core.validateInstructions(transaction, feePayer);
+  } catch (e) {
+    res.status(400).send({status: 'error', message: 'bad instructions'});
     return;
   }
 
