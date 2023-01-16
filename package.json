@@ -29,7 +29,7 @@
     "@tailwindcss/typography": "^0.5.0",
     "@types/jsonwebtoken": "^8.5.9",
     "axios": "^0.27.2",
-    "daisyui": "^1.24.3",
+    "daisyui": "^2.47.0",
     "immer": "^9.0.12",
     "jsbi": "^4.3.0",
     "jsonwebtoken": "^8.5.1",
